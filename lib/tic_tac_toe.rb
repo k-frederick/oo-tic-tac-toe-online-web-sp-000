@@ -59,19 +59,13 @@ class TicTacToe
     turn_count % 2 == 0 ? "X" : "O"
   end
 
-  def won?(board)
-    WIN_COMBINATIONS.detect do |win_combination|
-  win_index_1 = win_combination[0]
-  win_index_2 = win_combination[1]
-  win_index_3 = win_combination[2]
-
-  position_1 = board[win_index_1] # load the value of the board at win_index_1
-  position_2 = board[win_index_2] # load the value of the board at win_index_2
-  position_3 = board[win_index_3] # load the value of the board at win_index_3
-
-  position_1 == position_2 && position_2 == position_3 && position_taken?(board, win_index_2)
-  end
-  end
+  def won?
+     WIN_COMBINATIONS.any? do |combo|
+       if position_taken?(combo[0]) && @board[combo[0]] == @board[combo[1]] && @board[combo[1]] == @board[combo[2]]
+         return combo
+       end
+     end
+   end
 
   board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
   def full?(board)
