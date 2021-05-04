@@ -83,5 +83,5 @@ class TicTacToe
    if combo = won?
      @board[combo[0]]
    end
- end
   end
+end
