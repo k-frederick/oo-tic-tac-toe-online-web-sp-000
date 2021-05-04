@@ -71,17 +71,17 @@ class TicTacToe
     @board.all?{|square| square != " " }
   end
 
-  def draw?(board)
-    full?(board) && !won?(board)
+  def draw?
+   full? && !won?
   end
 
-  def over?(board)
-    full?(board) || draw?(board) || won?(board)
-  end
+  def over?
+   won? || draw?
+ end
 
-  def winner(board)
-    if won?(board)
-      board[won?(board)[0]]
-    end
-  end
+ def winner
+   if combo = won?
+     @board[combo[0]]
+   end
+ end
   end
