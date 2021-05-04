@@ -65,14 +65,10 @@ class TicTacToe
          return combo
        end
      end
-   end
+  end
 
-  board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
-  def full?(board)
-    board.all? do |player|
-      # binding.pry
-      player == "X" || player == "O"
-    end
+  def full?
+    @board.all?{|square| square != " " }
   end
 
   def draw?(board)
